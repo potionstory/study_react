@@ -17,12 +17,10 @@ class MiniApp extends Component {
                     name: this.state.name,
                     day: this.state.day,
                 }
-            ]
-        });
-        this.setState({     // 상태값 초기화
-            name: '',
+            ],
+            name: '',   // 상태값 초기화
             day: ''
-        })
+        });
     };
     handleChange = (e) => {
         this.setState({
