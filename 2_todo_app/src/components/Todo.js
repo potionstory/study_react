@@ -19,13 +19,11 @@ class Todo extends Component {
   
   render() {
     const { list } = this.state;
+    // this.state.list != list
 
     const changeStatus = (i) => {
-      // const tempList = list;
       list[i].mode = list[i].mode === 'view' ? 'edit' : 'view';
-      this.setState({
-        list
-      })
+      this.setState({ list })
     }
 
     return (
