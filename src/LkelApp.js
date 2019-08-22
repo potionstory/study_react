@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 //import Subject from "./components/Subject";
 //import Gnb from "./components/Gnb"
 //import Contents from "./components/Contents";
-import './App.css';
+import './LkelApp.css';
 
 class WriteArticle extends Component {
     constructor(props){
@@ -102,7 +102,9 @@ class ReadArticle extends Component {
         }
 
         return(
+          <>
             {readArticle}
+          </>
         );
     }
 }
