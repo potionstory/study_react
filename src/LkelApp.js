@@ -161,24 +161,21 @@ class App extends Component {
   
     render(){
         
-        var write, read;
+        var article;
         if(this.state.mode==='write'){
-            write = <WriteArticle subject={this.state.subject} submitButton={this.state.submitButton} onMemberSubmit={function(member){
-                this.setState({
-                    member: member
-                });
-            }.bind(this)}></WriteArticle>;
-            read = null;
+          article = <WriteArticle subject={this.state.subject} submitButton={this.state.submitButton} onMemberSubmit={function(member){
+            this.setState({
+                member: member
+            });
+          }.bind(this)}></WriteArticle>;
         } else if (this.state.mode==='read'){
-            write = null;
-            read = <ReadArticle member={this.state.member}></ReadArticle>;
+            article = <ReadArticle member={this.state.member}></ReadArticle>;
         }
 
         return(
             <div className="App">
                 <h1>{this.state.title}</h1>
-                {write}
-                {read}
+                {article}
                 <div className="lkel_btn_box">    
                     <button type="button" onClick={this.modeHandelChange} id={this.state.buttonId} className="lkel_btn">
                         {this.state.button}
