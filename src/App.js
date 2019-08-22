@@ -9,12 +9,7 @@ class App extends Component {
       count: 0,
       name: '',
       age: 0,
-      member:[
-        {
-          name1: "이철근",
-          age1: 36
-        }
-      ]
+      member:[]
     };
   }
 
@@ -27,12 +22,23 @@ class App extends Component {
 
   handleCreate = () => {
     this.setState({
+      count: ++this.state.count,
       member: [
+        ...this.state.member,
         {
-          name1: this.state.name,
-          age1: this.state.age
-        },
-        ...this.state.member
+          id: this.state.count,
+          name: this.state.name,
+          age: this.state.age
+        }
+      ]
+    });
+  };
+
+  handleRemove = (i) => {
+    this.setState({
+      member: [
+        ...this.state.member.slice(0, i),
+        ...this.state.member.slice(i + 1, this.state.member.length)
       ]
     });
   };
@@ -48,13 +54,12 @@ class App extends Component {
         <br />
         <button type="button" onClick={this.handleCreate}>입력</button>
         <div>
-          {this.state.name}
-          {this.state.age}
-          {this.state.member.map(v => {
+          {this.state.member.map((v, i) => {
             return (
-              <div key={v.name1}>
-                <span>{v.name1}</span>
-                <span>{v.age1}</span>
+              <div key={v.id}>
+                <span>{v.name}</span>
+                <span>{v.age}</span>
+                <button type="button" onClick={() => this.handleRemove(i)}>삭제</button>
               </div>
             )
           })}
